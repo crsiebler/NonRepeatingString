@@ -1,7 +1,30 @@
 from queue import Queue
 
+"""Script to find the first non-repeating string in a stream.
+
+This module reads a file called stream.txt to create a stream of strings.  As a string is received, return the first
+non-repeating string in the stream.
+
+Example:
+    $ python nonrepeating.py
+    
+Todo:
+    * Add input argument for file to parse as stream
+    * Create separate main so this is separate module
+"""
+
 
 def non_repeating(value, counts, q):
+    """Finds the first non-repeating string in a stream.
+
+    Args:
+        value (str): Latest string received in the string
+        counts (dict): Dictionary of strings containing the counts to determine if string is repeated
+        q (Queue): Container for all strings in stream that have yet determined as being repeated
+
+    Return:
+        str: First non-repeating string. None if all strings are repeated.
+    """
     q.put(value)
 
     if value in counts:
@@ -20,6 +43,8 @@ def non_repeating(value, counts, q):
 
 
 def process_stream():
+    """Processes the input file as a stream.
+    """
     counts = {}
     q = Queue()
 
@@ -28,6 +53,8 @@ def process_stream():
 
 
 def main():
+    """Driver method.
+    """
     process_stream()
 
 
